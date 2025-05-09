@@ -1,1 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <title>Audio Illusions</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: white;
+            margin: 0;
+            padding: 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .abstract {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-align: center;
+            color: #333;
+        }
+
+        .abstract-image {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .abstract-image img {
+            max-width: 50%;
+            height: auto;
+        }
+
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .illusion {
+            flex: 1 1 45%;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            max-width: 500px;
+            background-color: #fafafa;
+        }
+
+        .illusion h2 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .illusion img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+
+        .illusion audio {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .illusion {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Generating Audio Illusions with Diffusion Models</h1>
+
+    <p class="abstract">
+        Inspired by the use of diffusion models to create optical illusions,
+        we extend this idea to the auditory domain by proposing a method for
+        synthesizing audio illusions which can be played in various directions.
+        We show samples which can be played in the forward or flipped
+        (inverted frequency) directions. Code is available <a href="https://github.com/beepo34/cs280-final-proj">here</a>.
+    </p>
+
+    <div class="grid">
+        <h2>Forward</h2>
+        <h2>Flipped</h2>
+    </div>
+
+    <div class="grid">
+        <div class="illusion">
+            <h2>a cat purring</h2>
+            <img src="catpurring.png" alt="a cat purring">
+            <audio controls>
+                <source src="catpurring.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="illusion">
+            <h2>a cricket chirping</h2>
+            <img src="cricketchirping.png" alt="a cricket chirping">
+            <audio controls>
+                <source src="cricketchirping.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="illusion">
+            <h2>a dog barking</h2>
+            <img src="dogbarking.png" alt="a dog barking">
+            <audio controls>
+                <source src="dogbarking.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="illusion">
+            <h2>a bird squawking</h2>
+            <img src="birdsquawking.png" alt="a bird squawking">
+            <audio controls>
+                <source src="birdsquawking.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="illusion">
+            <h2>a door slamming</h2>
+            <img src="doorslamming.png" alt="a door slamming">
+            <audio controls>
+                <source src="doorslamming.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="illusion">
+            <h2>a window breaking</h2>
+            <img src="windowbreaking.png" alt="a window breaking">
+            <audio controls>
+                <source src="windowbreaking.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div class="illusion">
+            <h2>a horse galloping</h2>
+            <img src="horsegalloping.png" alt="a horse galloping">
+            <audio controls>
+                <source src="horsegalloping.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="illusion">
+            <h2>a keyboard clacking</h2>
+            <img src="keyboardclacking.png" alt="a keyboard clacking">
+            <audio controls>
+                <source src="keyboardclacking.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+
+    <h1>Method</h1>
+
+    <p class="abstract">
+        We leverage a pre-trained text-to-spectrogram latent diffusion model to
+        perform zero-shot generation of audio illusions. During the reverse
+        diffusion process, we combine noise estimates derived from transformed
+        noisy latent representations to denoise the spectrogram. This enables
+        the generation of audio samples that align with different textual prompts
+        depending on how they are played.
+    </p>
+
+    <div class="abstract-image">
+        <img src="diagram.png" alt="diagram">
+    </div>
+</body>
+
+</html>
